@@ -93,4 +93,15 @@ public class MusicOrganizer
             System.out.println(position + ":" + filename);
         }
     }
-}
+    
+    /**
+     * list files with the strig as parameter
+     */
+    public void listMatching(String searchString){
+        for (String filename : files) {
+            if(filename.contains(searchString)){
+                 System.out.println(filename);
+            }
+        }
+    } 
+}   
