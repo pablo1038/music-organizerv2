@@ -97,11 +97,18 @@ public class MusicOrganizer
     /**
      * list files with the strig as parameter
      */
-    public void listMatching(String searchString){
-        for (String filename : files) {
-            if(filename.contains(searchString)){
-                 System.out.println(filename);
+    public void listMatching(String searchString) {
+        int cancion = 0;
+        for(String filename : files) {
+            if (filename.contains(searchString)) {
+                System.out.println(filename);
+                cancion = cancion + 1;
             }
         }
-    } 
-}   
+        if (cancion == 0) {
+            System.out.println("ERROR, EL ARCHIVO NO ESTA EN LA LISTA");
+        }
+    }
+    
+    
+}  
