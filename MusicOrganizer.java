@@ -13,7 +13,7 @@ public class MusicOrganizer
     private ArrayList<String> files;
     // A player for the music files.
     private MusicPlayer player;
-        
+
     /**
      * Create a MusicOrganizer
      */
@@ -22,7 +22,7 @@ public class MusicOrganizer
         files = new ArrayList<String>();
         player = new MusicPlayer();
     }
-    
+
     /**
      * Add a file to the collection.
      * @param filename The file to be added.
@@ -31,7 +31,7 @@ public class MusicOrganizer
     {
         files.add(filename);
     }
-    
+
     /**
      * Return the number of files in the collection.
      * @return The number of files in the collection.
@@ -40,7 +40,7 @@ public class MusicOrganizer
     {
         return files.size();
     }
-    
+
     /**
      * List a file from the collection.
      * @param index The index of the file to be listed.
@@ -52,7 +52,7 @@ public class MusicOrganizer
             System.out.println(filename);
         }
     }
-    
+
     /**
      * Remove a file from the collection.
      * @param index The index of the file to be removed.
@@ -82,7 +82,7 @@ public class MusicOrganizer
     {
         player.stop();
     }
-    
+
     /**
      * List all item in the collection
      */
@@ -96,7 +96,7 @@ public class MusicOrganizer
             posicion++;
         }
     }
-    
+
     /**
      * list files with the strig as parameter
      */
@@ -112,12 +112,36 @@ public class MusicOrganizer
             System.out.println("ERROR, EL ARCHIVO NO ESTA EN LA LISTA");
         }
     }
-    
+
     public void playSamplesArtist (String artista){
         for (String filename : files) {
             if (filename.contains(artista)){
                 player.playSample(filename);
             }   
         }  
+    }
+
+    /**
+     * Localiza el índice del primer archivo que se corresponde con
+     * la cadena de búsqueda indicada .
+     * @param searchString La cadena que hay que buscar.
+     * @return El índice de la primera aparición o -1 si
+     * no se encuentra ninguna correspondencia
+     */
+    public int findFirst(String searchString){
+        int index = 0;
+        boolean search = false;
+        while ((index < files.size()) && !search) {
+            String filename = files.get(index);
+            index++;
+            if (filename.contains(searchString)){
+                search = true;
+            }
+        }
+        if (!search){
+            index = -1;
+            System.out.println("ERROR NO SE ENCUENTRAN CORRESPONDENCIAS");
+        }    
+        return index;
     }
 }
