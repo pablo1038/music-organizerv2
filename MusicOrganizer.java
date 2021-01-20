@@ -131,20 +131,17 @@ public class MusicOrganizer
     public int findFirst(String searchString){
         int index = 0;
         boolean found = false;
-        int resultado = 0;
-        while (index < files.size()) {
+        while ((index < files.size()) && !found) {
             String filename = files.get(index);
             index++;
             if (filename.contains(searchString)){
                 found = true;
-                resultado = index;
-                index = files.size();
             }
         }
         if (!found){
-            resultado = -1;
+            index = -1;
             System.out.println("ERROR NO SE ENCUENTRAN CORRESPONDENCIAS");
         }    
-        return resultado;
+        return index;
     }
 }
