@@ -1,5 +1,5 @@
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 /**
  * A class to hold details of audio files.
  * This version can play the files.
@@ -130,18 +130,21 @@ public class MusicOrganizer
      */
     public int findFirst(String searchString){
         int index = 0;
-        boolean search = false;
-        while ((index < files.size()) && !search) {
+        boolean found = false;
+        int resultado = 0;
+        while (index < files.size()) {
             String filename = files.get(index);
             index++;
             if (filename.contains(searchString)){
-                search = true;
+                found = true;
+                resultado = index;
+                index = files.size();
             }
         }
-        if (!search){
-            index = -1;
+        if (!found){
+            resultado = -1;
             System.out.println("ERROR NO SE ENCUENTRAN CORRESPONDENCIAS");
         }    
-        return index;
+        return resultado;
     }
 }
